@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { View,Text,Image,StyleSheet, ScrollView, SafeAreaView, TextInput } from "react-native";
 
 import api from './src/services/api'
-import {globalStyles} from './src/styles/globalStyles'
+import globalStyles from './src/styles/globalStyles'
 
 export default function App(){
   const [filmes,setFilmes] = useState([])
@@ -12,7 +12,7 @@ export default function App(){
     async function carregar(){
       if(pesquisa.trim() !== ''){
         try{
-          const response = await api.get(pesquisa.replace('', '%20'))
+          const response = await api.get(pesquisa.replace(' ', '%20'))
           setFilmes(response.data)
         }catch(e){
           console.error('Deu erro!',error)
